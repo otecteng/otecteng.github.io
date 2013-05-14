@@ -1,0 +1,112 @@
+body, p {
+  background: #FFFFFF;
+  font-family: Palatino,"Palatino Linotype", serif;
+  font-size: 18px;
+  text-align: justify;
+}
+li {
+  color: #404040;
+}
+code {
+  background-color: whiteSmoke !important;
+}
+h1 {
+  margin-bottom: 10px;
+}
+.container {
+  margin-top: 1em;
+}
+.myself p {
+  font-size: 1.2em;
+  line-height: 1.7em;
+}
+.content {
+  margin-top: 10px;
+}
+.content p {
+  line-height: 1.5;
+}
+header {
+  border-bottom: 1px solid #EEE;
+  font-size: 1.2em;
+}
+header #logo a {
+  text-decoration: none;
+}
+footer {
+  padding-top: 5px;
+  font-size: 0.9em;
+  font-style: italic;
+}
+#main {
+  margin-top: 0.5em;
+}
+ul#menu {
+  list-style-type: none;
+  text-align: center;
+}
+ul#menu li {
+  display: block;
+  float: left;
+  height: 26px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+ul#menu li.current {
+  background-color: #FFFFFF;
+}
+ul#menu li.current a {
+  color: #08c;
+}
+#menu a {
+  color: #444;
+  display: block;
+  float: left;
+  padding: 0px 4px;
+  text-decoration: none;
+}
+#menu a:hover {
+  background: #FFFFFF;
+  color: #0069D6;
+}
+#archive, .posts {
+  list-style-type: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+#archive li {
+  margin-bottom: 5px;
+}
+.description {
+  font-style: italic;
+  margin-left: 0.5em;
+}
+.highlight {
+  overflow: auto;
+  margin-bottom: 20px;
+}
+.highlight pre {
+  margin: 0;
+}
+.grey {
+  color: #BBB;
+  font-style: italic;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+#follow-me {
+  position: fixed;
+  left: 20px;
+  top: 20%;
+  width: 200px;
+}
+.top {
+  position:fixed;
+  right: 15px;
+  bottom: 15px;
+  width: 100px;
+}
+.top.hidden {
+  display:none;
+}
