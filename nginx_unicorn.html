@@ -31,11 +31,11 @@ cd ..
 #rails 
 gem sources -a "http://ruby.taobao.org"
 gem sources -r "http://rubygems.org/"
-gem install rails -v 3.2.13
+gem install rails -v 3.2.13 --no-ri --no-rdoc
 sudo apt-get install nodejs
 #unicorn
-gem install unicorn
-gem install sidekiq
+gem install unicorn --no-ri --no-rdoc
+gem install sidekiq --no-ri --no-rdoc
 #nginx
 wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.21.tar.gz
 tar -zxvf pcre-8.21.tar.gz
