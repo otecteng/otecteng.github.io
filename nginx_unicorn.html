@@ -3,11 +3,11 @@
 sudo apt-get install mysql-server
 sudo apt-get install -y build-essential openssl curl libcurl3-dev libreadline6 libreadline6-dev git zlib1g zlib1g-dev libssl-dev libyaml-dev libxml2-dev libxslt-dev autoconf automake libtool imagemagick libmagickwand-dev libpcre3-dev libsqlite3-dev libmysql-ruby libmysqlclient-dev
 #redis
-wget http://download.redis.io/releases/redis-2.6.16.tar.gz
-tar redis-2.6.16.tar.gz
-cd redis-2.6.16
-./configure
-make
+sudo wget http://download.redis.io/releases/redis-2.6.16.tar.gz
+sudo tar redis-2.6.16.tar.gz
+sudo cd redis-2.6.16
+sudo ./configure
+sudo make
 sudo make install
 wget https://github.com/ijonas/dotfiles/raw/master/etc/init.d/redis-server
 wget https://github.com/ijonas/dotfiles/raw/master/etc/redis.conf
@@ -24,8 +24,8 @@ cd ..
 sudo wget http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p448.tar.gz
 sudo tar xvfz ruby-1.9.3-p448.tar.gz
 cd ruby-1.9.3-p448/
-./configure
-make
+sudo ./configure
+sudo make
 sudo make install
 cd ..
 #rails 
@@ -40,21 +40,21 @@ sudo gem install sidekiq --no-ri --no-rdoc
 sudo wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.21.tar.gz
 sudo tar -zxvf pcre-8.21.tar.gz
 cd pcre-8.21
-./configure
-make
+sudo ./configure
+sudo make
 sudo make install
 cd ..
 sudo wget http://zlib.net/zlib-1.2.8.tar.gz
 tar -zxvf zlib-1.2.8.tar.gz
 cd zlib-1.2.8
-./configure
-make
+sudo ./configure
+sudo make
 sudo make install
 cd ..
 sudo wget http://nginx.org/download/nginx-1.4.3.tar.gz
 tar -zxvf nginx-1.4.3.tar.gz
 cd nginx-1.4.3
-./configure
-make
-make install
+sudo ./configure
+sudo make
+sudo make install
 cd ..
