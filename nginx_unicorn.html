@@ -21,8 +21,8 @@ sudo chmod +x /etc/init.d/redis-server
 sudo mv redis.conf /etc/redis.conf
 cd ..
 #ruby
-wget http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p448.tar.gz
-tar xvfz ruby-1.9.3-p448.tar.gz
+sudo wget http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p448.tar.gz
+sudo tar xvfz ruby-1.9.3-p448.tar.gz
 cd ruby-1.9.3-p448/
 ./configure
 make
@@ -37,21 +37,21 @@ sudo apt-get install -y nodejs
 sudo gem install unicorn --no-ri --no-rdoc
 sudo gem install sidekiq --no-ri --no-rdoc
 #nginx
-wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.21.tar.gz
-tar -zxvf pcre-8.21.tar.gz
+sudo wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.21.tar.gz
+sudo tar -zxvf pcre-8.21.tar.gz
 cd pcre-8.21
 ./configure
 make
 sudo make install
 cd ..
-wget http://zlib.net/zlib-1.2.8.tar.gz
+sudo wget http://zlib.net/zlib-1.2.8.tar.gz
 tar -zxvf zlib-1.2.8.tar.gz
 cd zlib-1.2.8
 ./configure
 make
 sudo make install
 cd ..
-wget http://nginx.org/download/nginx-1.4.3.tar.gz
+sudo wget http://nginx.org/download/nginx-1.4.3.tar.gz
 tar -zxvf nginx-1.4.3.tar.gz
 cd nginx-1.4.3
 ./configure
