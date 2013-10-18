@@ -20,6 +20,7 @@ sudo chown redis.redis /var/log/redis
 sudo mv redis-server /etc/init.d/redis-server
 sudo chmod +x /etc/init.d/redis-server
 sudo mv redis.conf /etc/redis.conf
+sudo update-rc.d redis-server defaults
 #ruby
 sudo wget http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p448.tar.gz
 sudo tar xvfz ruby-1.9.3-p448.tar.gz
@@ -61,4 +62,4 @@ cd ..
 sudo wget https://raw.github.com/otecteng/otecteng.github.io/master/nginx
 sudo mv nginx /etc/init.d/
 sudo chmod +x /etc/init.d/nginx
-
+sudo update-rc.d nginx defaults
