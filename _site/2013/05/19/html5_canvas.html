@@ -31,7 +31,7 @@ line-height: 1.7em;
     line-height: 30px;    
   }
 </style>
-<title>{{ page.title }}</title>
+<title>HTML5中的绘图坐标系的使用</title>
 </head>
 <body>
     <div class=container>
@@ -54,7 +54,36 @@ line-height: 1.7em;
 
 <div id=main>
 <article>
-{{ content }}
+<h2 id="html5">HTML5中的绘图坐标系的使用</h2>
+
+<p><br /></p>
+
+<h3 id="">系统要求</h3>
+
+<p>根据结构化的路口数据存储，在网页上自动生成道口示意图。路口数据包含道口，道路，路线三级，使用json表达。道口道路先实现标准十字路口，即道路由南向北，东向西，北向南，西向东构成，后续会增加其他形态的道口。示意图要求表达每条路线的走向。效果如下：<br /><img src="/images/ui.png" alt="ui" /></p>
+
+<h3 id="_2">绘图部分的实现</h3>
+
+<p>道路由多条路线构成，每条路线有分界线和走向指示构成。道口由不同角度的道路构成。系统原来的实现：由代码根据路线走向，计算每条分界线的绘制起点，终点，走向指示图标的旋转角度。这样的实现逻辑复杂，对于后续多道路的实现难以扩展。仔细考虑每条道路的绘图，如果以道路本身的起点作为参考坐标，其包含的分界线和图标的绘制都与道路走向平行。这样，只需要在绘制每条道路之前<strong>将坐标系平移并旋转至道路的起点坐标</strong>,然后按照统一的方式绘制道路即可。查找了一下html5中绘图部分的参考，正好有这部分的函数满足要求，即：<code>translate</code>，<code>rotate</code>函数。</p>
+
+<p>这样，我们只需要定义每个道路的坐标和旋转角度就可以完成整个道口的绘制了。参考代码：</p>
+
+<pre><code>ways_d = $.grep(site.ways, function(w){return w!=null &amp;&amp; w.d == i+1;});
+ctx.save();
+ctx.translate(rect[i].x,rect[i].y);
+ctx.rotate(Math.PI*rect[i].t);
+ctx.beginPath();
+$(ways_d).each(function(){
+    	ctx.moveTo(pos,0);
+    	ctx.lineTo(pos,-50);
+    	ctx.drawImage(images[this.type],pos,0,line_width,-50);
+    	pos += line_width;
+});
+ctx.moveTo(pos,0);
+ctx.lineTo(pos,-50);
+ctx.stroke();
+ctx.closePath();
+ctx.restore();</code></pre>
 </article>
 </div>
           <footer>

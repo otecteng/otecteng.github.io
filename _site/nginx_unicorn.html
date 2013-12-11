@@ -1,0 +1,65 @@
+#! /bin/sh
+#mysql
+sudo apt-get install mysql-server
+sudo apt-get install -y build-essential openssl curl libcurl3-dev libreadline6 libreadline6-dev git zlib1g zlib1g-dev libssl-dev libyaml-dev libxml2-dev libxslt-dev autoconf automake libtool imagemagick libmagickwand-dev libpcre3-dev libsqlite3-dev libmysql-ruby libmysqlclient-dev
+#redis
+sudo wget http://download.redis.io/releases/redis-2.6.16.tar.gz
+sudo tar -zxvf redis-2.6.16.tar.gz
+cd redis-2.6.16
+sudo ./configure
+sudo make
+sudo make install
+cd ..
+wget https://github.com/ijonas/dotfiles/raw/master/etc/init.d/redis-server
+wget https://github.com/ijonas/dotfiles/raw/master/etc/redis.conf
+sudo useradd redis
+sudo mkdir -p /var/lib/redis
+sudo mkdir -p /var/log/redis
+sudo chown redis.redis /var/lib/redis
+sudo chown redis.redis /var/log/redis
+sudo mv redis-server /etc/init.d/redis-server
+sudo chmod +x /etc/init.d/redis-server
+sudo mv redis.conf /etc/redis.conf
+sudo update-rc.d redis-server defaults
+#ruby
+sudo wget http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p448.tar.gz
+sudo tar xvfz ruby-1.9.3-p448.tar.gz
+cd ruby-1.9.3-p448/
+sudo ./configure
+sudo make
+sudo make install
+cd ..
+#rails 
+sudo gem sources -a "http://ruby.taobao.org"
+sudo gem sources -r "http://rubygems.org/"
+sudo gem install rails -v 3.2.13 --no-ri --no-rdoc
+sudo apt-get install -y nodejs
+#unicorn
+sudo gem install unicorn --no-ri --no-rdoc
+sudo gem install sidekiq --no-ri --no-rdoc
+#nginx
+sudo wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.21.tar.gz
+sudo tar -zxvf pcre-8.21.tar.gz
+cd pcre-8.21
+sudo ./configure
+sudo make
+sudo make install
+cd ..
+sudo wget http://zlib.net/zlib-1.2.8.tar.gz
+sudo tar -zxvf zlib-1.2.8.tar.gz
+cd zlib-1.2.8
+sudo ./configure
+sudo make
+sudo make install
+cd ..
+sudo wget http://nginx.org/download/nginx-1.4.3.tar.gz
+sudo tar -zxvf nginx-1.4.3.tar.gz
+cd nginx-1.4.3
+sudo ./configure
+sudo make
+sudo make install
+cd ..
+sudo wget https://raw.github.com/otecteng/otecteng.github.io/master/nginx
+sudo mv nginx /etc/init.d/
+sudo chmod +x /etc/init.d/nginx
+sudo update-rc.d nginx defaults

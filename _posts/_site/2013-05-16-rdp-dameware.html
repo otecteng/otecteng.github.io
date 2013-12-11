@@ -1,0 +1,15 @@
+<h2 id="rdpdameware">RDP-Dameware使用</h2>
+
+<p><br /></p>
+
+<h3 id="1_dameware_10061">1) Dameware 10061</h3>
+
+<p>一台多媒体设备，xp系统，音频屡次被远程桌面客户端带走未释放，用户反映影响恶劣，:(。于是准备换<a href="http://www.dameware.com/">Dameware</a>替换掉远程桌面的功能。新开一台xp虚拟机，使用Dameware Remote Control连接，报错10061,环境：防火墙已关闭，RPC已开启。解决方法：<code>计算机配置-&gt;Windows设置-&gt;安全设置-&gt;本地策略-&gt;安全选项-&gt;网络访问：本地帐户的共享和安全模式-&gt;经典-本地用户以自己的身份验证</code><br /><br /></p>
+
+<h3 id="2">2)命令行开启远程桌面</h3>
+
+<p>可是这种方法需要先在远程桌面登录后配置，问题是，远程桌面被关掉了。使用下列命令试图打开远程桌面： <code>wmic /node:&quot;192.168.1.1&quot; /USER:&quot;administrator&quot; PATH win32_terminalservicesetting WHERE (__Class!=&quot;&quot;) CALL SetAllowTSConnections 1</code>，结果报RPC服务不可用，检查防火墙服务，系统响应无法启动ICS。重新启动虚拟机后，系统响应为拒绝访问，偶日！还是从控制台等里上去修改了身份验证方式后wmic才能正常使用<br /><br /></p>
+
+<h3 id="3rdp">3)RDP的音频设置</h3>
+
+<p>回到原来的问题，应该有个更方便的办法，运行<code>MMC -&gt; 文件 -&gt; 添加/删除管理单元 -&gt; 添加 -&gt; 组策略对象编辑器 -&gt; 添加 -&gt; 本地计算机 -&gt; 完成 -〉关闭 -&gt; 确定</code>， 回到MMC界面。选择<code>计算机配置-&gt; 管理模板 -&gt; Windows 组件 -&gt; 终端服务 -&gt; 客户端/服务器数据重定向，允许音频重定向，改成禁用，确定</code>。</p>
