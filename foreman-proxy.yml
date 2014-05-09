@@ -1,0 +1,36 @@
+---
+:daemon: true
+:daemon_pid: /var/run/foreman-proxy/foreman-proxy.pid
+:port: 8443
+:tftp: false
+:tftproot: /var/lib/tftpboot
+
+:dns: false
+:dns_provider: nsupdate
+:dhcp: false
+:dhcp_vendor: isc
+
+:virsh_network: default
+
+# enable PuppetCA management
+:puppetca: true
+:ssldir: /var/lib/puppet/ssl
+:puppetdir: /etc/puppet
+
+# enable Puppet management
+:puppet: true
+:puppet_provider: puppetssh
+
+:customrun_cmd: /bin/false
+:customrun_args: -ay -f -s
+
+:puppet_conf: /etc/puppet/puppet.conf
+:puppetssh_sudo: false
+:puppetssh_command: /usr/bin/puppet agent --test --no-usecacheonfailure
+:puppetssh_user: root
+:puppetssh_keyfile: /etc/foreman-proxy/id_rsa
+
+:puppet_user: root
+
+:log_file: /var/log/foreman-proxy/proxy.log
+:log_level: DEBUG
